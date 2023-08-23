@@ -37,7 +37,9 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Translate
         run: |
-          python3 --version
+          python3 transform.py
+          echo Transformation complate. Here is the new file:
+          cat transformed.xml
         #  echo Attempting to instal xsltproc...
         #  sudo apt update
         #  sudo apt install xsltproc
