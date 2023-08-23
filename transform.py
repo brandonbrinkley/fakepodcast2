@@ -9,19 +9,19 @@ for ns in namespaces:
     ET.register_namespace(ns, namespaces[ns])
 
 # Parse the feed file
-#tree = ET.parse(filein)
 tree = ET.ElementTree(file=filein)
 root = tree.getroot()
 
-# Change the channel type from episodic to serial
-#for type in root.iter('itunes:type'):
-#typetag = root.find('itunes:type')
-typetag = root.find("./channel/itunes:type", namespaces)
-print ('DEBUG: ' + typetag.text)
-typetag.text = "serial"
-print ('DEBUG: ' + typetag.text)
+# Remove generator tag
+typetag = root.find("./channel/generator", namespaces)
+typetag.remove()
 
-tree  = ET.ElementTree(root)
+# Change the channel type from episodic to serial
+typetag = root.find("./channel/itunes:type", namespaces)
+print ('Found type: ' + typetag.text)
+typetag.text = "serial"
+print ('Changed type : ' + typetag.text)
 
 # Output the new feed file
+tree  = ET.ElementTree(root)
 tree.write(fileout)
