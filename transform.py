@@ -13,8 +13,7 @@ tree = ET.ElementTree(file=filein)
 root = tree.getroot()
 
 # Remove generator tag
-generatortag = root.find("./channel/generator", namespaces)
-generatortag.getparent().remove(generatortag)
+root.find("./channel", namespaces).remove(generator)
 
 # Change the channel type from episodic to serial
 typetag = root.find("./channel/itunes:type", namespaces)
