@@ -8,7 +8,7 @@
      </xsl:copy>
  </xsl:template>
 
- <xsl:template match="rss/channel/itunes:type/@value[.='episodic']">
+ <xsl:template match="rss/channel/itunes:type/@value">
   <xsl:attribute name="value">serial</xsl:attribute>
  </xsl:template>
 
