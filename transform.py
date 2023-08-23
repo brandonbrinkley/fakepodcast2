@@ -10,7 +10,7 @@ namespaces = {
 
 tree = ET.parse('borrowed.xml')
 
-for type in tree.getroot().iterfind('ns1:type', namespaces):
+for type in tree.getroot().find('itunes:type', namespaces):
     type.text = "serial"
 
 tree.write('transformed.xml')
