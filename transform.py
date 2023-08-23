@@ -9,11 +9,17 @@ for ns in namespaces:
     ET.register_namespace(ns, namespaces[ns])
 
 # Parse the feed file
-tree = ET.parse(filein)
+#tree = ET.parse(filein)
+tree = ET.ElementTree(file=filein)
+root = tree.getroot()
 
 # Change the channel type from episodic to serial
-for type in tree.getroot().iter('itunes:type'):
+for type in root.iter('itunes:type'):
+    print DEBUG: type.text
     type.text = "serial"
+    print DEBUG: type.text
+
+tree  = ET.ElementTree(root)
 
 # Output the new feed file
 tree.write(fileout)
