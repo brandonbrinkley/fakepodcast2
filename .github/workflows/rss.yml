@@ -27,7 +27,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Download
-        run: curl -o borrowed.rss https://anchor.fm/s/6e95162c/podcast/rss
+        run: curl -o borrowed.xml https://anchor.fm/s/6e95162c/podcast/rss
 
       - name: Inspect
         run: |
@@ -43,3 +43,7 @@ jobs:
           echo Installation complete.
           echo What version  of xsltproc are we running?
           xsltproc -V
+          echo Starting the transformation...
+          xsltproc --output transformed.xml transform.xslt borrowed.xml
+          echo Transformation complate. Here is the new file:
+          cat transformed.xml
