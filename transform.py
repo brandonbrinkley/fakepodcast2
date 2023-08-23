@@ -8,8 +8,8 @@ import xml.etree.ElementTree as ET
 #    'anchor': 'https://anchor.fm/xmlns'
 #}
 namespaces = dict([node for _, node in ET.iterparse(filename, events=['start-ns'])])
-    for ns in namespaces:
-        ET.register_namespace(ns, namespaces[ns])
+for ns in namespaces:
+    ET.register_namespace(ns, namespaces[ns])
         
 tree = ET.parse('borrowed.xml')
 
