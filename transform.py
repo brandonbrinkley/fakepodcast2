@@ -16,7 +16,7 @@ root = tree.getroot()
 # Change the channel type from episodic to serial
 #for type in root.iter('itunes:type'):
 #typetag = root.find('itunes:type')
-typetag = root.find("./channel/itunes:type")
+typetag = root.find("./channel/itunes:type", namespaces)
 print ('DEBUG: ' + typetag.text)
 typetag.text = "serial"
 print ('DEBUG: ' + typetag.text)
