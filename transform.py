@@ -14,10 +14,11 @@ tree = ET.ElementTree(file=filein)
 root = tree.getroot()
 
 # Change the channel type from episodic to serial
-for type in root.iter('itunes:type'):
-    print ('DEBUG: ' + type.text)
-    type.text = "serial"
-    print ('DEBUG: ' + type.text)
+#for type in root.iter('itunes:type'):
+typetag = root.find('itunes:type')
+print ('DEBUG: ' + typetag.text)
+typetag.text = "serial"
+print ('DEBUG: ' + typetag.text)
 
 tree  = ET.ElementTree(root)
 
