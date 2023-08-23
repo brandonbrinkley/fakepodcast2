@@ -37,6 +37,9 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Translate
         run: |
+          echo Attempting to instal xsltproc...
           sudo apt update
           sudo apt install xsltproc
+          echo Installation complete.
+          echo What version  of xsltproc are we running?
           xsltproc -V
